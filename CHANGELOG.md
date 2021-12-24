@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added compat entry
+	- Julia 1.5
+- Added Dependencies
+	- IJulia
+	- Pluto
 - Added templates for
 	- Issues
 	- Feature requests
