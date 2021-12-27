@@ -1,0 +1,6 @@
+[deps]
+Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
+JavisNB = "92afb270-2599-44f6-96a1-44c6efb1daf1"
+Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
+PlutoTest = "cb4044da-4d16-4ffa-a6a3-8cad7f73ebdc"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
