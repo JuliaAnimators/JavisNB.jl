@@ -114,6 +114,8 @@ function embed(vid::Video, frames::Int, objects::Vector{AbstractObject})
     return _pluto_viewer(vid, frames, objects)
 end
 
+embed(::Nothing) = nothing
+
 function embed(
     video::Video;
     framerate = 30,
