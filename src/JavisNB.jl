@@ -2,7 +2,7 @@ module JavisNB
 
 using Javis
 
-import Javis: AbstractObject, Video
+import Javis: AbstractObject, Video, StreamConfig
 
 import Interact
 import Interact: @map, @layout!
@@ -32,7 +32,8 @@ anim[x]
 """
 function _pluto_viewer(video::Video, frames::Int, objects::Vector)
     arr = collect(
-        Javis.get_javis_frame(video, objects, frame; layers = video.layers) for frame in 1:frames
+        Javis.get_javis_frame(video, objects, frame; layers = video.layers) for
+        frame in 1:frames
     )
     return arr
 end
@@ -95,7 +96,7 @@ embed(render(myVideo)...)
 ```
 """
 function embed(pathname::String)
-    
+
     if isdefined(Main, :IJulia) && Main.IJulia.inited
         display(MIME("text/html"), """<img src="$(pathname)">""")
     elseif isdefined(Main, :PlutoRunner)
@@ -111,6 +112,35 @@ end
 
 function embed(vid::Video, frames::Int, objects::Vector{AbstractObject})
     return _pluto_viewer(vid, frames, objects)
+end
+
+function embed(
+    video::Video;
+    framerate = 30,
+    pathname = "javis_$(randstring(7)).gif",
+    liveview = false,
+    streamconfig::Union{StreamConfig,Nothing} = nothing,
+    tempdirectory = "",
+    ffmpeg_loglevel = "panic",
+    rescale_factor = 1.0,
+    postprocess_frames_flow = identity,
+    postprocess_frame = Javis.default_postprocess,
+)
+
+    return embed(
+        render(
+            video,
+            framerate = framerate,
+            pathname = pathname,
+            liveview = liveview,
+            streamconfig = streamconfig,
+            tempdirectory = tempdirectory,
+            ffmpeg_loglevel = ffmpeg_loglevel,
+            rescale_factor = rescale_factor,
+            postprocess_frames_flow = postprocess_frames_flow,
+            postprocess_frame = postprocess_frame,
+        ),
+    )
 end
 
 end
