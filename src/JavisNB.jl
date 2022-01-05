@@ -5,7 +5,7 @@ using Javis
 import Javis: AbstractObject, Video, StreamConfig
 
 import Interact
-import Interact: @map, @layout!
+import Interact: @map, @layout!, Widget
 
 export embed
 
@@ -70,7 +70,7 @@ function _jupyter_viewer(
     t = Interact.textbox(1:frames, value = 1, typ = Int)
     f = Interact.slider(1:frames, label = "Frame", value = t)
     obs = Interact.Observables.throttle(1 / framerate, f)
-    output = @map get_javis_frame(video, objects, &obs; layers = video.layers)
+    output = @map Javis.get_javis_frame(video, objects, &obs; layers = video.layers)
     wdg = Widget(["f" => f, "t" => t], output = output)
     @layout! wdg vbox(hbox(:f, :t), output)
 end
