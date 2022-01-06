@@ -9,9 +9,9 @@ import Interact: @map, @layout!, Widget
 
 export embed
 
-###################
-###### Pluto Viewer
-###################
+#################
+#### Pluto Viewer
+#################
 
 """
     _pluto_viewer(video::Video, frames::Int, actions::Vector)
@@ -75,6 +75,10 @@ function _jupyter_viewer(
     @layout! wdg vbox(hbox(:f, :t), output)
 end
 
+
+##########
+#### embed
+##########
 
 """
     embed(pathname)
