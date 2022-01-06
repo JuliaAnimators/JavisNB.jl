@@ -1,9 +1,10 @@
 [deps]
+Animations = "27a7e980-b3e6-11e9-2bcd-0b925532e340"
 IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
 Interact = "c601a237-2ae4-5e1e-952c-7a85b0c7eef1"
 Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
-JavisNB = "92afb270-2599-44f6-96a1-44c6efb1daf1"
 Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
-PlutoTest = "cb4044da-4d16-4ffa-a6a3-8cad7f73ebdc"
+ReferenceTests = "324d217c-45ce-50fc-942e-d289b448e8cf"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

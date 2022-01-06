@@ -25,7 +25,7 @@ let
     ob = Object(JCircle(O, 30, color = "black", action = :fill))
     act!(ob, Action(1:50, anim_translate(Point(100, 0))))
     act!(ob, Action(51:100, anim_translate(Point(-100, 0))))
-    v = render(myvideo, pathname = "temp_files/test_pluto_viewer_render.gif")
+    v = render(myvideo, pathname = "images/test_pluto_viewer_render.gif")
 end
 
 # ╔═╡ 9dc6164c-7896-4114-acad-2229a3b93b7a
@@ -45,11 +45,11 @@ let
     ob = Object(JCircle(O, 30, color = "black", action = :fill))
     act!(ob, Action(1:50, anim_translate(Point(100, 0))))
     act!(ob, Action(51:100, anim_translate(Point(-100, 0))))
-    embed(myvideo, tempdirectory = "temp_files", pathname = "")
+    embed(myvideo, tempdirectory = "images", pathname = "")
 end
 
 # ╔═╡ 109494be-9b41-4c8b-9f6c-26ffc361fa12
-nothing
+
 
 # ╔═╡ Cell order:
 # ╠═e7cac400-6751-11ec-3910-af3121135a31
