@@ -5,7 +5,7 @@ using Javis
 import Javis: AbstractObject, Video, StreamConfig
 
 import Interact
-import Interact: @map, @layout!, Widget
+import Interact: @map, @layout!, Widget, Widgets, hbox, vbox
 
 export embed
 
@@ -81,22 +81,54 @@ end
 ##########
 
 """
-    embed(pathname)
+    embed(
+        video::Video;
+        framerate=30,
+        pathname="javis_GIBBERISH.gif",
+        liveview=false,
+        streamconfig::Union{StreamConfig, Nothing} = nothing,
+        tempdirectory="",
+        ffmpeg_loglevel="panic",
+        rescale_factor=1.0,
+        postprocess_frame=identity,
+        postprocess_frames_flow=default_postprocess
+    )
 
 This is the core function of `JavisNB` it allows to show the output of `render` 
 from [`Javis`](https://juliaanimators.github.io/Javis.jl/stable/) directly within 
 a notebook (IJulia or Pluto).
 
-To use it just wrap it around the `render``, am example within `Pluto`:
+To use it just replace `render` with `embed`, am example within `Pluto`:
 
 ```julia
+# In one cell 
 using Javis, JavisNB
 
-myVideo - Vide(...)
+# In a new one
+begin
+    function ground(args...)
+        background("white")
+        sethue("black")
+    end
+    vid = Video(500, 500)
+    Background(1:50, ground)
+    o = Object(JCircle(O, 20, action=:fill))
+    act!(o, Action(1:25, anim_translate(Point(20, 0))))
+    act!(o, Action(26:50, anim_translate(Point(-20, 0))))
 
-# All the code here...
+    # In pure Javis here we would have
+    # render(args...;kwargs...)
+    # Instead, within a notebook one uses
+    embed(args...;'kwargs...)
+end
 
-embed(render(myVideo)...)
+A different use of `embed`, in case there is a gif that you want to add to a notebook 
+`embed` also works by calling the path to the gif and that will be shown within your notebook.
+So that using 
+
+    embed(path_to_a_gif)
+
+within a notebook will show the gif.
 ```
 """
 function embed(pathname::String)
@@ -133,20 +165,23 @@ function embed(
     postprocess_frame = Javis.default_postprocess,
 )
 
-    return embed(
-        render(
-            video,
-            framerate = framerate,
-            pathname = pathname,
-            liveview = liveview,
-            streamconfig = streamconfig,
-            tempdirectory = tempdirectory,
-            ffmpeg_loglevel = ffmpeg_loglevel,
-            rescale_factor = rescale_factor,
-            postprocess_frames_flow = postprocess_frames_flow,
-            postprocess_frame = postprocess_frame,
-        ),
+    out = render(
+        video,
+        framerate = framerate,
+        pathname = pathname,
+        liveview = liveview,
+        streamconfig = streamconfig,
+        tempdirectory = tempdirectory,
+        ffmpeg_loglevel = ffmpeg_loglevel,
+        rescale_factor = rescale_factor,
+        postprocess_frames_flow = postprocess_frames_flow,
+        postprocess_frame = postprocess_frame,
     )
+    return if !liveview
+        embed(out)
+    else
+        embed(out...)
+    end
 end
 
 end
