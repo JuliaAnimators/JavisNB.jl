@@ -6,7 +6,6 @@ version = "0.1.0"
 [deps]
 Interact = "c601a237-2ae4-5e1e-952c-7a85b0c7eef1"
 Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
-Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 
 [compat]
 julia = "1.6, 1.7"
