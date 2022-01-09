@@ -15,20 +15,12 @@ export embed
 
 """
     _pluto_viewer(video::Video, frames::Int, actions::Vector)
-Creates an interactive viewer in a Pluto Notebook by storing all the frames in-memory
-```
-# In separate Pluto notebook cells
-using PlutoUI
 
-anim = render(
-    video;
-    pathname = "loading.gif",liveview=true
-);
+Creates an interactive viewer in a Pluto Notebook by storing all the frames in-memory.
 
-@bind x Slider(1:1:frames)
+# Returns
 
-anim[x]
-```
+`arr`: List of Javis frames
 """
 function _pluto_viewer(video::Video, frames::Int, objects::Vector)
     arr = collect(
@@ -42,7 +34,7 @@ end
     PlutoViewer
 
 Wrapper to assist viewing rendered gifs as cell outputs of Pluto notebooks
-when `liveview = false` 
+when `liveview = false`.
 """
 struct PlutoViewer
     filename::String
@@ -81,6 +73,37 @@ end
 ##########
 
 """
+    embed(pathname::String)
+
+Shows a gif within a notebook by calling the path to the gif.
+
+# Arguments
+    
+- `pathname::String`: the path to a gif to render in the notebook
+"""
+function embed(pathname::String)
+
+    if (isdefined(Main, :IJulia) && Main.IJulia.inited) || endswith(@__FILE__, ".ipynb")
+        display(MIME("text/html"), """<img src="$(pathname)">""")
+    elseif isdefined(Main, :PlutoRunner)
+        return PlutoViewer(pathname)
+    end
+
+    return pathname
+end
+
+function embed(vid::Video, frames::Int, objects::Vector{AbstractObject}, framerate::Int)
+    return _jupyter_viewer(vid, frames, objects, framerate)
+end
+
+function embed(vid::Video, frames::Int, objects::Vector{AbstractObject})
+    return _pluto_viewer(vid, frames, objects)
+end
+
+embed(::Nothing) = nothing
+
+
+"""
     embed(
         video::Video;
         framerate=30,
@@ -94,11 +117,15 @@ end
         postprocess_frames_flow=default_postprocess
     )
 
-This is the core function of `JavisNB` it allows to show the output of `render` 
-from [`Javis`](https://juliaanimators.github.io/Javis.jl/stable/) directly within 
-a notebook (IJulia or Pluto).
+The core function of `JavisNB`.
+It allows one to show the output of `Javis.render` 
+from [Javis](https://juliaanimators.github.io/Javis.jl/stable/) directly within a notebook.
+Notebooks supported are: 
 
-To use it just replace `render` with `embed`, am example within `Pluto`:
+- IJulia
+- Pluto
+
+To use it just replace `render` with `embed`, an example within `Pluto`:
 
 ```julia
 # In one cell 
@@ -119,39 +146,12 @@ begin
     # In pure Javis here we would have
     # render(args...;kwargs...)
     # Instead, within a notebook one uses
-    embed(args...;'kwargs...)
+    # embed(args...;kwargs...)
+    # For example
+    embed(vid, pathname="rendered_with_embed.gif")
 end
-
-A different use of `embed`, in case there is a gif that you want to add to a notebook 
-`embed` also works by calling the path to the gif and that will be shown within your notebook.
-So that using 
-
-    embed(path_to_a_gif)
-
-within a notebook will show the gif.
 ```
 """
-function embed(pathname::String)
-
-    if isdefined(Main, :IJulia) && Main.IJulia.inited
-        display(MIME("text/html"), """<img src="$(pathname)">""")
-    elseif isdefined(Main, :PlutoRunner)
-        return PlutoViewer(pathname)
-    end
-
-    return pathname
-end
-
-function embed(vid::Video, frames::Int, objects::Vector{AbstractObject}, framerate::Int)
-    return _jupyter_viewer(vid, frames, objects, framerate)
-end
-
-function embed(vid::Video, frames::Int, objects::Vector{AbstractObject})
-    return _pluto_viewer(vid, frames, objects)
-end
-
-embed(::Nothing) = nothing
-
 function embed(
     video::Video;
     framerate = 30,
