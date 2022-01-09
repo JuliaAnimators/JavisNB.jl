@@ -14,10 +14,7 @@ makedocs(;
         canonical = "https://JuliaAnimators.github.io/JavisNB.jl",
         assets = String[],
     ),
-    pages = [
-        "Home" => "index.md",
-        "References" => "references.md",
-    ],
+    pages = ["Home" => "index.md", "References" => "references.md"],
 )
 
 deploydocs(; repo = "github.com/JuliaAnimators/JavisNB.jl", push_preview = true)
