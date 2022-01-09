@@ -17,10 +17,100 @@ animation and lets you scroll through the frame.
 
 ![](../assets/JavisNB_pluto_shown.gif)
 
+Cells' code to copy and paste it:
+
+```julia
+# Top cell
+using JavisNB, Javis
+
+# Bottom cell
+begin
+    function ground(args...)
+        background("blue")
+        sethue("black")
+    end
+    vid = Video(500, 150)
+    Background(1:50, ground)
+    o = Object(JCircle(Point(-100, 0), 20, action = :fill, color = "orange"))
+    act!(o, Action(1:25, anim_translate(Point(200, 0))))
+    act!(o, Action(26:50, anim_translate(Point(-200, 0))))
+    a = embed(vid, pathname = "test.gif")
+end
+```
+
 ![](../assets/JavisNB_pluto_liveview_shown.gif)
+
+Cells' code to copy and paste it:
+
+```julia
+# Cell 1
+using JavisNB, Javis, PlutoUI
+
+# Cell 2
+begin
+    function ground(args...)
+        background("blue")
+        sethue("black")
+    end
+    vid = Video(500, 150)
+    Background(1:50, ground)
+    o = Object(JCircle(Point(-100, 0), 20, action = :fill, color = "orange"))
+    act!(o, Action(1:25, anim_translate(Point(200, 0))))
+    act!(o, Action(26:50, anim_translate(Point(-200, 0))))
+    a = embed(vid, pathname = "test.gif", liveview = true)
+end
+
+# Cell 3
+@bind idx Slider(1:length(a), show_value=true)
+
+# Cell 4
+a[idx]
+```
 
 ## Jupyter Examples
 
 ![](../assets/JavisNB_jupyter_shown.gif)
 
+Cells' code to copy and paste it:
+
+```julia
+# Top cell
+using JavisNB, Javis
+
+# Bottom cell
+begin
+    function ground(args...)
+        background("blue")
+        sethue("black")
+    end
+    vid = Video(500, 150)
+    Background(1:50, ground)
+    o = Object(JCircle(Point(-100, 0), 20, action = :fill, color = "orange"))
+    act!(o, Action(1:25, anim_translate(Point(200, 0))))
+    act!(o, Action(26:50, anim_translate(Point(-200, 0))))
+    a = embed(vid, pathname = "test.gif")
+end
+```
+
 ![](../assets/JavisNB_jupyter_liveview_shown.gif)
+
+Cells' code to copy and paste it:
+
+```julia
+# Top cell
+using JavisNB, Javis
+
+# Bottom cell
+begin
+    function ground(args...)
+        background("blue")
+        sethue("black")
+    end
+    vid = Video(500, 150)
+    Background(1:50, ground)
+    o = Object(JCircle(Point(-100, 0), 20, action = :fill, color = "orange"))
+    act!(o, Action(1:25, anim_translate(Point(200, 0))))
+    act!(o, Action(26:50, anim_translate(Point(-200, 0))))
+    a = embed(vid, pathname = "test.gif", liveview=true)
+end
+```
