@@ -79,7 +79,7 @@ Shows a gif within a notebook by calling the path to the gif.
 
 # Arguments
     
-- `pathname::String`: the path to a gif to render in the notebook
+- `pathname::String`: path of the gif to render in the notebook
 """
 function embed(pathname::String)
 
@@ -125,7 +125,8 @@ Notebooks supported are:
 - IJulia
 - Pluto
 
-To use it just replace `render` with `embed`, an example within `Pluto`:
+To use `embed` just replace `Javis.render` with `embed`. 
+Here is an example one can use within a `Pluto` notebook:
 
 ```julia
 # In one cell 
