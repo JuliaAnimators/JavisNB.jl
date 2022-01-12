@@ -36,7 +36,7 @@ Pluto.run()
 
 Now you should have a working `Pluto` environment. For more information about `Pluto` check the package [home page](https://github.com/fonsp/Pluto.jl).
 
-Once you have `Pluto` running one can easily use `Javis` within a notebook:
+Once `Pluto` is running one can easily use `Javis` within a notebook using `embed` in place of `render`:
 
 ![](../assets/JavisNB_pluto_shown.gif)
 
@@ -100,10 +100,11 @@ You will need to use one package:
 
 - [IJulia](https://julialang.github.io/IJulia.jl/stable/)
 
+To install it run the following in the Julia REPL
 ```julia
 ] add IJulia
 ```
-After the package is installed:
+After the package is installed type
 ```julia
 using IJulia
 notebook()
