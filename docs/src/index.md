@@ -13,7 +13,30 @@ In `Pluto` it returns an array of the frames composing a gif.
 In `Jupyter` it creates an interactive view of the animation and lets you scroll through the frames of the gif.
 
 
-## Pluto Examples
+## Pluto
+
+You will need to use two packages:
+
+- [**Pluto**](https://github.com/fonsp/Pluto.jl) - simple reactive notebooks for Julia
+
+- [**PlutoUI**](https://github.com/fonsp/PlutoUI.jl) - enables the creation of widgets in Pluto notebooks
+
+To install these packages, run the following in your Julia REPL:
+
+```julia
+] add Pluto, PlutoUI
+```
+
+After adding the packages run:
+
+```julia
+using Pluto
+Pluto.run()
+```
+
+Now you should have a working `Pluto` environment. For more information about `Pluto` check the package [home page](https://github.com/fonsp/Pluto.jl).
+
+Once you have `Pluto` running one can easily use `Javis` within a notebook:
 
 ![](../assets/JavisNB_pluto_shown.gif)
 
@@ -37,6 +60,10 @@ begin
     a = embed(vid, pathname = "test.gif")
 end
 ```
+
+One can also have the animation returned as an array of frames 
+to work on it more carefully, this is done setting `liveview=true`.
+Together with `PlutoUI` this allows an interactive interface: 
 
 ![](../assets/JavisNB_pluto_liveview_shown.gif)
 
@@ -67,7 +94,26 @@ end
 a[idx]
 ```
 
-## Jupyter Examples
+## Jupyter
+
+You will need to use one package:
+
+- [IJulia](https://julialang.github.io/IJulia.jl/stable/)
+
+```julia
+] add IJulia
+```
+After the package is installed:
+```julia
+using IJulia
+notebook()
+```
+
+You should now have a running `Jupyter` notebook. If that is not the case check the `IJulia` [documentation](https://julialang.github.io/IJulia.jl/stable/) for possible solutions.
+
+To make the Jupyter Notebook experience with Javis as easy as possible, 
+calling `embed` to render a gif will directly show the video 
+as `MIME` element in the notebook as seen below: 
 
 ![](../assets/JavisNB_jupyter_shown.gif)
 
@@ -92,6 +138,8 @@ begin
 end
 ```
 
+Javis supports a minimal version of the Javis viewer using the [Interact.jl](https://github.com/JuliaGizmos/Interact.jl) package. If `embed` is called with `liveview=true` it automatically detects `IJulia` (the Jupyter Notebook environment) and allow for interactive scrolling of the gif frames, as seen below:
+
 ![](../assets/JavisNB_jupyter_liveview_shown.gif)
 
 Copy and paste each of the code blocks into different cells
@@ -114,3 +162,12 @@ begin
     a = embed(vid, pathname = "test.gif", liveview=true)
 end
 ```
+
+### Common Problems:
+- WebIO error (WebIO is not installed)
+    
+    The comment in discussion [here](https://github.com/JuliaAnimators/Javis.jl/pull/288#issuecomment-747671260) should help out with the problem.
+
+- No change on dragging the silder/changing the value in textbox
+
+    Try restarting the kernel. This might problably be an error with the WebIO integration.
