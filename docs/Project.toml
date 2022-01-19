@@ -1,3 +1,4 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
+JavisNB = "92afb270-2599-44f6-96a1-44c6efb1daf1"
