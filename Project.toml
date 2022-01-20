@@ -1,6 +1,6 @@
 name = "JavisNB"
 uuid = "92afb270-2599-44f6-96a1-44c6efb1daf1"
-authors = ["Jacob Zelko <jacobszelko@gmail.com>", "Giovanni Puccetti <giovanni.puccetti@sns.it>"]
+authors = ["Jacob Zelko <jacobszelko@gmail.com>", "Giovanni Puccetti <gpuccetti92@gmail.com>"]
 version = "0.1.0"
 
 [deps]
@@ -10,4 +10,4 @@ Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
 [compat]
 julia = "1.6"
 Interact = "0.10"
-Javis = "0.7"
+Javis = "0.8"
