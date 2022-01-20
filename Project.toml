@@ -1,6 +1,6 @@
 name = "JavisNB"
 uuid = "92afb270-2599-44f6-96a1-44c6efb1daf1"
-authors = ["Jacob Zelko <jacobszelko@gmail.com>", "Giovanni Puccetti <gpuccetti92@gmail.com>"]
+authors = ["Jacob Zelko <jacobszelko@gmail.com>", "Giovanni Puccetti <g.puccetti92@gmail.com>"]
 version = "0.1.0"
 
 [deps]
