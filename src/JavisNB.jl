@@ -2,7 +2,7 @@ module JavisNB
 
 using Javis
 
-import Javis: AbstractObject, Video, StreamConfig
+import Javis: AbstractObject, Video
 
 import Interact
 import Interact: @map, @layout!, Widget, Widgets, hbox, vbox
@@ -109,7 +109,6 @@ embed(::Nothing) = nothing
         framerate=30,
         pathname="javis_GIBBERISH.gif",
         liveview=false,
-        streamconfig::Union{StreamConfig, Nothing} = nothing,
         tempdirectory="",
         ffmpeg_loglevel="panic",
         rescale_factor=1.0,
@@ -158,7 +157,6 @@ function embed(
     framerate = 30,
     pathname = "javis_$(randstring(7)).gif",
     liveview = false,
-    streamconfig::Union{StreamConfig,Nothing} = nothing,
     tempdirectory = "",
     ffmpeg_loglevel = "panic",
     rescale_factor = 1.0,
@@ -171,7 +169,7 @@ function embed(
         framerate = framerate,
         pathname = pathname,
         liveview = liveview,
-        streamconfig = streamconfig,
+        streamconfig = nothing,
         tempdirectory = tempdirectory,
         ffmpeg_loglevel = ffmpeg_loglevel,
         rescale_factor = rescale_factor,
