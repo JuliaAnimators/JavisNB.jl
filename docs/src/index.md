@@ -38,7 +38,7 @@ Now you should have a working `Pluto` environment. For more information about `P
 
 Once `Pluto` is running one can easily use `Javis` within a notebook using `embed` in place of `render`:
 
-![](../assets/JavisNB_pluto_shown.gif)
+![](assets//JavisNB_pluto_shown.gif)
 
 Copy and paste each of the code blocks into different cells
 
@@ -65,7 +65,7 @@ One can also have the animation returned as an array of frames
 to work on it more carefully, this is done setting `liveview=true`.
 Together with `PlutoUI` this allows an interactive interface: 
 
-![](../assets/JavisNB_pluto_liveview_shown.gif)
+![](assets//JavisNB_pluto_liveview_shown.gif)
 
 Copy and paste each of the code blocks into different cells
 
@@ -116,7 +116,7 @@ To make the Jupyter Notebook experience with Javis as easy as possible,
 calling `embed` to render a gif will directly show the video 
 as `MIME` element in the notebook as seen below: 
 
-![](../assets/JavisNB_jupyter_shown.gif)
+![](assets//JavisNB_jupyter_shown.gif)
 
 Copy and paste each of the code blocks into different cells
 
@@ -141,7 +141,7 @@ end
 
 Javis supports a minimal version of the Javis viewer using the [Interact.jl](https://github.com/JuliaGizmos/Interact.jl) package. If `embed` is called with `liveview=true` it automatically detects `IJulia` (the Jupyter Notebook environment) and allow for interactive scrolling of the gif frames, as seen below:
 
-![](../assets/JavisNB_jupyter_liveview_shown.gif)
+![](assets//JavisNB_jupyter_liveview_shown.gif)
 
 Copy and paste each of the code blocks into different cells
 
