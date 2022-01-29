@@ -10,4 +10,4 @@ Javis = "78b212ba-a7f9-42d4-b726-60726080707e"
 [compat]
 julia = "1.6"
 Interact = "0.10"
-Javis = "0.8"
+Javis = "0.7.2"
