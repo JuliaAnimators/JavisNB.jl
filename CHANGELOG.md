@@ -4,6 +4,7 @@
 
 - Added compat entry
 	- Julia 1.5
+	- Javis >= 0.7.2
 - Added Dependencies
 	- IJulia
 	- Pluto
