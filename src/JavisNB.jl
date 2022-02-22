@@ -26,7 +26,7 @@ Creates an interactive viewer in a Pluto Notebook by storing all the frames in-m
 function _pluto_viewer(video::Video, frames::Int, objects::Vector)
     arr = collect(
         Javis.get_javis_frame(video, objects, frame; layers = video.layers) for
-        frame = 1:frames
+        frame in 1:frames
     )
     return arr
 end
