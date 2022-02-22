@@ -1,7 +1,6 @@
 # JavisNB
 
-<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliaanimators.github.io/Javis.jl/stable/) -->
-
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://juliaanimators.github.io/Javis.jl/stable/)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://juliaanimators.github.io/JavisNB.jl/dev/)
 [![Coverage](https://codecov.io/gh/JuliaAnimators/Javis.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/JuliaAnimators/JavisNB.jl)
 
