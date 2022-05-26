@@ -1,7 +1,7 @@
 name = "JavisNB"
 uuid = "92afb270-2599-44f6-96a1-44c6efb1daf1"
 authors = ["Jacob Zelko <jacobszelko@gmail.com>", "Giovanni Puccetti <g.puccetti92@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Interact = "c601a237-2ae4-5e1e-952c-7a85b0c7eef1"
