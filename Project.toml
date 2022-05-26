@@ -11,4 +11,4 @@ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 [compat]
 Interact = "0.10"
 Javis = "0.9"
-julia = "1.6"
+julia = "1.7"
