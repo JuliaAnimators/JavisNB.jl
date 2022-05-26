@@ -5,7 +5,7 @@
 - Update Javis.jl compat
 - fix kwarg in `embed`
 
-##v0.1.0
+## v0.1.0 (01/02/2022)
 
 - Added compat entry
   - Julia 1.5
